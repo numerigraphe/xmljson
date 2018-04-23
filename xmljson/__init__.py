@@ -143,11 +143,11 @@ class XMLData(object):
                     value[self.text_content] = self._fromstring(text)
         count = Counter(child.tag for child in children)
         for child in children:
-            if count[child.tag] == 1:
-                value.update(self.data(child))
-            else:
-                result = value.setdefault(child.tag, self.list())
-                result += self.data(child).values()
+            #if count[child.tag] == 1:
+            #    value.update(self.data(child))
+            #else:
+            result = value.setdefault(child.tag, self.list())
+            result += self.data(child).values()
         return self.dict([(root.tag, value)])
 
 
